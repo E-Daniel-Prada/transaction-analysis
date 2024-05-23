@@ -86,6 +86,34 @@ Lenguaje de alto nivel de programación interpretado cuya filosofía hace hincap
 
 Es un marco web de desarrollo front-end de React de código abierto, con funcionalidades como la representación del lado del servidor y la generación de sitios web estáticos para aplicaciones web basadas en React. Al ser un lenguaje liviano es eficiente para el logeo, carga y consulta de datos.frw 
 
+### Flujo de datos
 
+****************Imagen *********************
+
+#### 1. Consulta por ID
+
+Consultar datos transaccionales por ID desde una aplicación frontend o servicio backend desarrollado en Next.js, utilizando MongoDB como base de datos. 
+
+#### 2. Flujo de autenticación
+
+Implica la verificación de credenciales de usuario utilizando Redis como almacén de caché para información de autenticación. Se busca el usuario o correo electrónico en Redis para validar la autenticidad del usuario. 
+
+#### 3. Flujo de analítica
+
+Análisis a partir de visualizaciones utilizando herramientas de Business Intelligence, las cuales realizan consultas a base de datos SQL.
+
+#### 4. Carga de datos
+
+- Carga Data Transaccional a MongoDB: 
+
+Involucra la carga de datos transaccionales desde una aplicación frontend o interfaz de consola utilizando Python, y cargando los datos en MongoDB. 
+
+- Carga Data Transaccional a SQL: 
+
+Implica la carga de datos transaccionales desde una aplicación frontend o interfaz de consola utilizando Python, y cargando los datos en una base de datos SQL. 
+
+- Carga Analítica a MongoDB y SQL: 
+
+Consiste en la carga de datos desde un servicio Python, primero a MongoDB para almacenamiento temporal y luego a una base de datos SQL para un análisis.
 
 
