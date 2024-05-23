@@ -6,20 +6,15 @@ import pandas as pd
 
 def import_csv_to_mongodb():
     # Conexión a MongoDB
-    client = MongoClient('mongodb://root:password@localhost:27017/transaction_analysis_db')
-    db = client.base_de_datos
-    collection = db.coleccion
-
-    # Ruta al archivo CSV
-    csv_file_path = 'test.csv'
-
-    # Lectura del archivo CSV
-    df = pd.read_csv(csv_file_path)
-
-    # Iteración sobre las filas del DataFrame y almacenamiento en MongoDB
-    for index, row in df.iterrows():
-        data = row.to_dict()
-        collection.insert_one(data)
+    print("test...............0")
+    client = MongoClient('mongodb', 27017)
+    db = client['transaction_analysis_db']
+    collection = db['testcollection']
+    print("test...............1")
+    df = pd.read_csv('/usr/local/airflow/data/your_csvfile.csv')
+    data = df.to_dict(orient='records')
+    collection.insert_many(data)
+    print("test...............2")
 
 default_args = {
     'owner': 'airflow',

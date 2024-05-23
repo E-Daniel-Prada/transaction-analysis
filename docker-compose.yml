@@ -70,6 +70,7 @@ services:
       - "8082:8080"
     volumes:
         - ./dags:/app/airflow/dags
+        - ./data:/usr/local/airflow/data 
         # - ./credentials.json:/home/credentials.json
     command:
           - /bin/sh
