@@ -87,6 +87,7 @@ services:
               airflow standalone >> /app/airflow/app.log 2>&1 &
               sleep 20; airflow connections delete postgres_default
               airflow connections add postgres_default --conn-type email --conn-login postgres --conn-password superTest --conn-host db --conn-port 5432
+              airflow connections add mongo_default --conn-type uri --conn-host 'mongodb://localhost:27017/'
               airflow users create --role Admin --username airflow --email airflow@airflow --firstname airflow --lastname airflow --password superTest
               sh
             # export GOOGLE_APPLICATION_CREDENTIALS=/home/credentials.json
