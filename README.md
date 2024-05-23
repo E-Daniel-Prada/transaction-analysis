@@ -14,11 +14,11 @@ Por útlimo, se utiliza Next.js versión 14 en el frontend para que el cliente p
 
 ## Objetivos
 
-### Objetivo general: 
+### Objetivo general
 
 Implementar arquitectura de bases de datos que permita gestionar información de pagos rechazados que conllevan a devoluciones de dinero en Mercado Libre, para identificar potenciales eficiencias en la gestión de liquidez, mitigación de fraude y mejora en los procesos financieros que satisfagan al cliente.
   
-### Objetivos específicos:
+### Objetivos específicos
 
 1.	Diseñar e implementar modelos de datos adecuados para la estructuración y almacenamiento eficiente de información relacionada con pagos rechazados, considerando tanto aspectos transaccionales como analíticos.
 
@@ -28,13 +28,13 @@ Implementar arquitectura de bases de datos que permita gestionar información de
 
 ## Atributos de calidad
 
-### Escalabilidad:
+### Escalabilidad
 
 Se toma como referencia el modelo de escalabilidad híbrido (Scale Diagonally) considerando que se utilizan motores relacionales y no relacionales. En primera instancia, para los frameworks como Redis y Mongo DB es eficiente el modelo de escalabilidad horizontal. En ese orden de ideas, en la medida que incremente el volumen transaccional, se amplía la capacidad de gestión de clústeres y nodos. 
 
 Por su parte, la sección de base de datos relacionales se fundamenta en un modelo de escalabilidad vertical, donde se expandirá la capacidad de almacenamiento según los modelos de analítica.
 
-### Rendimiento:
+### Rendimiento
 
 El rendimiento de la arquitectura se puede medir mediante el consumo de memoria y CPU por contenedor (Docker), de igual forma, es posible monitorear los datos leídos y escritos, al igual que hacer seguimiento al performance de los contenedores mediantes los "logs".
 
@@ -56,6 +56,35 @@ Dado que el rol principal que se tendrá durante la ejecución del proyecto es d
 
 La confiabilidad se relaciona con el punto de seguridad previamente descrito, por consiguiente, se tendrá en consideración la utilización de cuotas de recursos, garantizar la seguridad de los recursos del contenedor, usar fuente confiable como ir a la fuente del código y no ejecutar el contenedor de Docker desde la raíz. De igual forma, garantizar la independencia de los contenedores.
 
+## Descripción de la arquitectura
+
+Arquitectura basada en Docker para consulta e ingesta de datos de pagos rechazados. 
+
+![image](https://github.com/Elkin77/transaction-analysis/assets/161098729/2b37fa4d-044d-4da6-8595-e2c593a66bf8)
+
+### Componentes
+
+#### 1. Redis
+
+Redis es una base de datos en memoria de código abierto que se utiliza como almacén de estructuras de datos clave-valor. Es conocida por su velocidad y versatilidad, por lo que se aplica ampliamente en casos de uso, incluido el almacenamiento en caché, la gestión de sesiones, la mensajería en tiempo real, entre otros.  
+
+Así mismo, Redis ofrece características únicas que lo hacen especialmente adecuado para gestionar el caché en eventos como el inicio de sesión. Su rendimiento, estructuras de datos específicas, capacidad de TTL, escalabilidad y facilidad de integración lo convierten en una opción sólida para mejorar el rendimiento y la eficiencia del proceso de inicio de sesión en una aplicación. 
+
+#### 2. MongoDB
+
+Motor de base de datos documental, al ser una base de datos no relacional basada en documentos es eficiente para el procesamiento y consulta de la información, considerando que no tiene dependencia de otras tablas ni la rigidez de la estructuras de las tablas relacionales.
+
+#### 3. PostgresSQL
+
+Sistema de gestión de bases de datos relacional orientado a objetos y de código abierto, ideal para soportar y crear consultas a nivel analítico para estructurar consultas a nivel negocio
+
+#### 4. Python
+
+Lenguaje de alto nivel de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Y con notable efectividad para lectura de archivos y lectura a base de datos no relacionales
+
+#### 5.Next.js
+
+Es un marco web de desarrollo front-end de React de código abierto, con funcionalidades como la representación del lado del servidor y la generación de sitios web estáticos para aplicaciones web basadas en React. Al ser un lenguaje liviano es eficiente para el logeo, carga y consulta de datos.frw 
 
 
 
