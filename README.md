@@ -116,4 +116,37 @@ Implica la carga de datos transaccionales desde una aplicación frontend o inter
 
 Consiste en la carga de datos desde un servicio Python, primero a MongoDB para almacenamiento temporal y luego a una base de datos SQL para un análisis.
 
+### Tecnologías utilizadas
+
+La arquitectura se fundamenta en Docker Compose para garantizar la escabilidad del proceso. Desde la perspectiva del backend, se contemplan tres motores de base de datos, los cuales son Redis, Mongo DB y SQL. Cada motor procesa la información con base en información transaccional o proceso de analítica. Así mismo, se utilizará el lenguaje de programación python para el pre-procesamiento de información.  
+
+Desde la perspectiva frontend, se desplegará la herramienta mediante Next.js y de ser necesario, una herramienta de visualización (dashboard) para el proceso de analítica. 
+
+### Lenguajes de programación y frameworks
+
+Se optó por usar los siguientes lenguajes de programación: 
+
+Python, JavaScript, Node.js, SQL, NoSQL y framework Next.js, el cual fundamenta su trabajo en javascript, en su versión 14 
+
+### Configuración e instalación
+
+### Uso del proyecto
+
+### Mantenimiento y soporte
+
+### Contribuciones
+
+### Licencia
+
+### Agradecimientos
+
+### Descripción de cada archivo y directorio
+
+**** Imagen de la estructura del repositorio
+
+
+
+
+
+
 
