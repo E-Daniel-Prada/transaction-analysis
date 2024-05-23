@@ -1,6 +1,7 @@
 version: '3.8'
 services:
-  postgres:
+
+  project-postgres:
     image: postgres:latest
     container_name: project-postgres
     env_file:
@@ -8,24 +9,47 @@ services:
     volumes:
       - ./db/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./db/postgres/config/postgres.conf:/etc/postgresql/postgresql.conf
+      - ./data/postgres:/var/lib/postgresql/data:rw
     ports:
       - "5432:5432"
     networks:
-      - transaction-analysis-network
+      - mongodb-network
 
-  mongo:
+  mongodb:
     image: mongo:latest
-    container_name: project-mongo
+    container_name: mongodb
+    hostname: mongodb
     env_file:
       - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./db/mongo/init.js:/docker-entrypoint-initdb.d/init.js
     ports:
       - "27017:27017"
     networks:
-      - transaction-analysis-network
+      - mongodb-network
 
-  app:
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_SERVER: 'mongodb'
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+    ports:
+      - 8081:8081      
+    networks:
+      - mongodb-network
+    depends_on:
+      - mongodb
+
+  project-app:
     build: ./src/app
     container_name: project-app
     volumes:
@@ -34,11 +58,52 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - postgres
-      - mongo
+      - mongodb
     networks:
-      - transaction-analysis-network
+      - mongodb-network
+
+  apache-airflow:
+    container_name: apache-airflow
+    image: python:3.8-slim-buster
+    tty: true
+    ports:
+      - "8082:8080"
+    volumes:
+        - ./dags:/app/airflow/dags
+        # - ./credentials.json:/home/credentials.json
+    command:
+          - /bin/sh
+          - -c
+          - |
+              mkdir -p /app/airflow
+              touch /app/airflow/app.log
+              pip install --upgrade pip
+              apt update -y; apt install procps net-tools iputils-ping traceroute -y
+              pip install virtualenv apache-airflow apache-airflow-providers-postgres
+              pip install pymongo
+              pip install pandas
+              echo 'Instalacion de Airflow Ok!'
+              airflow standalone >> /app/airflow/app.log 2>&1 &
+              sleep 20; airflow connections delete postgres_default
+              airflow connections add postgres_default --conn-type email --conn-login postgres --conn-password superTest --conn-host db --conn-port 5432
+              airflow users create --role Admin --username airflow --email airflow@airflow --firstname airflow --lastname airflow --password superTest
+              sh
+            # export GOOGLE_APPLICATION_CREDENTIALS=/home/credentials.json
+    environment:
+        AIRFLOW_HOME: /app/airflow
+        AIRFLOW__CORE__FERNET_KEY: ''
+        AIRFLOW__WEBSERVER__AUTHENTICATE: 'false'
+        AIRFLOW__WEBSERVER__RBAC: 'false'
+        AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+        AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - mongodb-network
+    
+
 
 networks:
-  transaction-analysis-network:
+  mongodb-network:
     driver: bridge
+    name: mongo-network

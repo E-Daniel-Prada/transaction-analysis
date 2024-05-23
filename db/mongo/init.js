@@ -3,4 +3,4 @@ db.createUser({
     pwd: "password",
     roles: [ { role: "readWrite", db: "transaction_analysis_db" } ]
   });
-  db.createCollection("sample_collection");
+db.createCollection("testcollection");
