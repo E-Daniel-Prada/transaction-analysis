@@ -1,17 +1,16 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
+from airflow.utils.dates import days_ago
 from pymongo import MongoClient
 import psycopg2
 
 default_args = {
-    'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
+    'start_date': days_ago(1),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
-    'retry_delay': timedelta(minutes=5),
 }
 
 dag = DAG(
@@ -22,7 +21,7 @@ dag = DAG(
 )
 
 def fetch_from_mongo():
-    client = MongoClient('mongodb://testuser:testpassword123@mongo:27017/')
+    client = MongoClient('mongodb://root:password@mongodb:27017/')
     db = client['test']
     collection = db['testcollection']
     data = list(collection.find())
@@ -30,13 +29,15 @@ def fetch_from_mongo():
     return data
 
 def insert_into_postgres(data):
+    print("test 1......")
     conn = psycopg2.connect(
-        dbname='transaction_analysis_db',
-        user='user',
-        password='password',
-        host='postgres',
+        dbname='airflow',
+        user='airflow',
+        password='airflow',
+        host='project-postgres',  # Cambiado de 'localhost' a 'project-postgres'
         port='5432'
     )
+    print("test 2....")
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS transactionbi (
@@ -47,7 +48,7 @@ def insert_into_postgres(data):
     for item in data:
         cursor.execute('''
             INSERT INTO transactionbi (_id, Transaction_id)
-            VALUES (%s, %s, %s)
+            VALUES (%s, %s)
             ON CONFLICT (_id) DO NOTHING
         ''', (str(item['_id']), item['Transaction_id']))
     conn.commit()

@@ -3,17 +3,22 @@ services:
 
   project-postgres:
     image: postgres:latest
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
     container_name: project-postgres
     env_file:
       - .env
-    volumes:
-      - ./db/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./db/postgres/config/postgres.conf:/etc/postgresql/postgresql.conf
-      - ./data/postgres:/var/lib/postgresql/data:rw
     ports:
       - "5432:5432"
     networks:
       - mongodb-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   mongodb:
     image: mongo:latest
@@ -83,11 +88,12 @@ services:
               pip install virtualenv apache-airflow apache-airflow-providers-postgres
               pip install pymongo
               pip install pandas
+              apt-get update && apt-get install -y postgresql-client
               echo 'Instalacion de Airflow Ok!'
               airflow standalone >> /app/airflow/app.log 2>&1 &
               sleep 20; airflow connections delete postgres_default
-              airflow connections add postgres_default --conn-type email --conn-login postgres --conn-password superTest --conn-host db --conn-port 5432
-              airflow connections add mongo_default --conn-type uri --conn-host 'mongodb://localhost:27017/'
+              airflow connections add postgres_default --conn-type postgres --conn-login airflow --conn-password airflow --conn-host project-postgres --conn-port 5432 --conn-schema airflow
+              airflow connections add mongo_default --conn-type uri --conn-host 'mongodb://root:password@mongodb:27017/'
               airflow users create --role Admin --username airflow --email airflow@airflow --firstname airflow --lastname airflow --password superTest
               sh
             # export GOOGLE_APPLICATION_CREDENTIALS=/home/credentials.json
@@ -100,10 +106,11 @@ services:
         AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    depends_on:
+      - project-postgres
+      - mongodb
     networks:
       - mongodb-network
-    
-
 
 networks:
   mongodb-network:
