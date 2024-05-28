@@ -54,20 +54,6 @@ services:
     depends_on:
       - mongodb
 
-  project-app:
-    build: ./src/app
-    container_name: project-app
-    volumes:
-      - ./data/input:/app/data/input
-      - ./data/output:/app/data/output
-    ports:
-      - "8000:8000"
-    depends_on:
-      - mongodb
-      - redis
-    networks:
-      - mongodb-network
-
   apache-airflow:
     container_name: apache-airflow
     image: python:3.8-slim-buster
@@ -115,13 +101,25 @@ services:
 
   redis:
     image: redis:latest
-    container_name: redis
+    environment:
+      - REDIS_HOST=redis-12686.c325.us-east-1-4.ec2.redns.redis-cloud.com
+      - REDIS_PORT=12686
+      - REDIS_PASSWORD=FU3MsSsInSR9MD759DJqBvTKumAJvXKG
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "6380:6379"
+      - "3000:3000"
+    depends_on:
+      - redis
+      - project-postgres
     networks:
       - mongodb-network
-
+      
 networks:
   mongodb-network:
     driver: bridge
     name: mongo-network
+
