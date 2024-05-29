@@ -1,4 +1,4 @@
-# transaction-analysis
+# Transaction-Analysis
 
 ## Introducción
 
@@ -244,9 +244,10 @@ Todos los derechos reservados a los gestores del proyecto. Primera versión (May
 
 Reconocimiento a los desarrolladores del proyecto y a los profesores de la asignatura Tópicos Avanzados en Base de Datos de la Pontificia Universidad Javeriana, donde se abordaron desde perspectiva académica las bases de datos implementadas.
 
-### Descripción de cada archivo y directorio
+### Directorio
 
-**** Imagen de la estructura del repositorio
+![Captura desde 2024-05-28 23-39-05](https://github.com/Elkin77/transaction-analysis/assets/161098729/40dbab52-d592-48cb-a285-54b378ceadf1)
+
 
 
 
