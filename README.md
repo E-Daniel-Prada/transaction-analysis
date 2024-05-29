@@ -136,9 +136,21 @@ Python, JavaScript, Node.js, SQL, NoSQL y framework Next.js, el cual fundamenta 
 
 ### Contribuciones
 
+Si quieres contribuir al proyecto, puedes usar un flujo de trabajo bifurcado y con posterioridad realizar la solicitud de incorporación de cambios.
+
+Una bifurcación es un nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio “ascendente” original. Las bifurcaciones se suelen usar para iterar ideas o cambios antes de que se vuelvan a proponer al repositorio ascendente, como en proyectos de código abierto o cuando un usuario no tiene acceso de escritura al repositorio ascendente.
+
+Ahora bien, para que puedas trabajar con la bifucarción, es necesario clonar el repositorio en la máquina local.
+
+Por último, la solicitud de cambios serán analizadas y se notificará la aceptación o ampliación de información.
+
 ### Licencia
 
+Todos los derechos reservados a los gestores del proyecto. Primera versión (Mayo 2024)
+
 ### Agradecimientos
+
+Reconocimiento a los desarrolladores del proyecto y a los profesores de la asignatura Tópicos Avanzados en Base de Datos de la Pontificia Universidad Javeriana, donde se abordaron desde perspectiva académica las bases de datos implementadas.
 
 ### Descripción de cada archivo y directorio
 
