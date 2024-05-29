@@ -1,0 +1,33 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/my-account/MyAccount.module.sass ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.MyAccount_MyAccount__t4Nx6 {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 1080px;
+}
+.MyAccount_MyAccount__title__wfeoh {
+  background-image: linear-gradient(270deg, #716A5C, #5DB7DE);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  margin-top: 0px;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.MyAccount_MyAccount__panels__Z0vsf {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+}
+.MyAccount_MyAccount__panels__Z0vsf > div {
+  border: 1px solid #A39B8B;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.MyAccount_MyAccount__panels__Z0vsf > div > h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,54 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/login/LoginForm/LoginForm.module.sass ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.LoginForm_NewAccountForm__acR8E {
+  display: block;
+  margin: 5rem auto 0;
+  max-width: 30rem;
+}
+.LoginForm_NewAccountForm__title__hv8UQ {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  background-image: linear-gradient(270deg, #716A5C, #5DB7DE);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.LoginForm_NewAccountForm__form__B_QXp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+.LoginForm_NewAccountForm__form__B_QXp > input[type=text], .LoginForm_NewAccountForm__form__B_QXp input[type=password] {
+  color: #fff;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #A39B8B;
+  font-size: 1.25rem;
+}
+.LoginForm_NewAccountForm__form__B_QXp > input[type=text]:focus, .LoginForm_NewAccountForm__form__B_QXp input[type=password]:focus {
+  outline: none;
+  border-bottom: 1px solid #5DB7DE;
+}
+.LoginForm_NewAccountForm__form__B_QXp > input[name=submit] {
+  border: 1px solid #5DB7DE;
+  background: transparent;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
+.LoginForm_NewAccountForm__signup__Gblw6 {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.LoginForm_NewAccountForm__signup__Gblw6 a {
+  color: #fff;
+}

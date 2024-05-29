@@ -1,0 +1,126 @@
+{
+  "pages": {
+    "/(home)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(home)/page.js"
+    ],
+    "/(home)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(home)/layout.css",
+      "static/chunks/app/(home)/layout.js"
+    ],
+    "/(home)/error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(home)/error.js"
+    ],
+    "/(home)/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(home)/loading.css",
+      "static/chunks/app/(home)/loading.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/error.css",
+      "static/chunks/app/error.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/not-found.css",
+      "static/chunks/app/not-found.js"
+    ],
+    "/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/login/page.css",
+      "static/chunks/app/login/page.js"
+    ],
+    "/my-account/@userInfo/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/my-account/@userInfo/page.js"
+    ],
+    "/my-account/@userInfo/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/my-account/@userInfo/loading.css",
+      "static/chunks/app/my-account/@userInfo/loading.js"
+    ],
+    "/my-account/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/my-account/page.js"
+    ],
+    "/my-account/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/my-account/layout.css",
+      "static/chunks/app/my-account/layout.js"
+    ],
+    "/payment/[[...pay]]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/payment/[[...pay]]/page.css",
+      "static/chunks/app/payment/[[...pay]]/page.js"
+    ],
+    "/payment/[[...pay]]/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/payment/[[...pay]]/loading.css",
+      "static/chunks/app/payment/[[...pay]]/loading.js"
+    ],
+    "/payment/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/payment/layout.css",
+      "static/chunks/app/payment/layout.js"
+    ],
+    "/failedTransactions/[[...pay]]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/failedTransactions/[[...pay]]/page.css",
+      "static/chunks/app/failedTransactions/[[...pay]]/page.js"
+    ],
+    "/failedTransactions/[[...pay]]/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/failedTransactions/[[...pay]]/loading.css",
+      "static/chunks/app/failedTransactions/[[...pay]]/loading.js"
+    ],
+    "/failedTransactions/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/failedTransactions/layout.css",
+      "static/chunks/app/failedTransactions/layout.js"
+    ],
+    "/inconsistency/[[...pay]]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/inconsistency/[[...pay]]/page.css",
+      "static/chunks/app/inconsistency/[[...pay]]/page.js"
+    ],
+    "/inconsistency/[[...pay]]/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/inconsistency/[[...pay]]/loading.css",
+      "static/chunks/app/inconsistency/[[...pay]]/loading.js"
+    ],
+    "/inconsistency/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/inconsistency/layout.css",
+      "static/chunks/app/inconsistency/layout.js"
+    ]
+  }
+}
