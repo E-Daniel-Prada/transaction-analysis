@@ -60,7 +60,7 @@ La confiabilidad se relaciona con el punto de seguridad previamente descrito, po
 
 Arquitectura basada en Docker para consulta e ingesta de datos de pagos rechazados. 
 
-![image](https://github.com/Elkin77/transaction-analysis/assets/161098729/2b37fa4d-044d-4da6-8595-e2c593a66bf8)
+![image](https://github.com/Elkin77/transaction-analysis/assets/161098729/c80be9c0-a580-46eb-aedf-0f7ad0f0b2c9)
 
 ### Componentes
 
@@ -88,7 +88,8 @@ Es un marco web de desarrollo front-end de React de código abierto, con funcion
 
 ### Flujo de datos
 
-****************Imagen *********************
+![image](https://github.com/Elkin77/transaction-analysis/assets/161098729/01b87e82-415f-46ff-8ea0-cedc83e7fe62)
+
 
 #### 1. Consulta por ID
 
