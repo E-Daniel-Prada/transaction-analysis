@@ -185,6 +185,20 @@ Una vez se ingresa, se debe identificar las tabla de datos cargadas. Una vez ide
 
 11. En el Front se debe realizar el registro de usuario. Diligenciar todos los datos y dar click en el botón "Crear cuenta". Una vez creada la cuenta, dar click en el botón "Pagos" para acceder a la visualización del usuario. Es importante mencionar que en el login se utiliza la base de datos Redis.
 
+12. En la app podrá visualizar los siguientes indicadores:
+
+![MicrosoftTeams-image (3)](https://github.com/Elkin77/transaction-analysis/assets/161098729/d56605e1-f2a2-4a83-b73f-cba39592fc02)
+
+
+![MicrosoftTeams-image (2)](https://github.com/Elkin77/transaction-analysis/assets/161098729/31cd9f38-02ee-4461-a937-955e255d9bb4)
+
+
+![MicrosoftTeams-image (1)](https://github.com/Elkin77/transaction-analysis/assets/161098729/496f025a-9a40-40fe-ba98-d85425b0161c)
+
+
+![MicrosoftTeams-image](https://github.com/Elkin77/transaction-analysis/assets/161098729/956055a5-2842-4688-aea1-9f2fe27e36b5)
+
+
 ### Uso del proyecto
 
 El proyecto tiene el objetivo de identificar transacciones que derivan en devoluciones de dinero para la entidad Mercado Libre. Por consiguiente, el objetivo se centra en identificar patrones sobre los datos recolectados, en aras de generar efiencias financieras (dar seguimiento al flujo de caja y potenciales riesgo de liquidez), dar mayor cobertura en el monitoreo de operaciones fraudulentas y garantizar mayor calidad de servicio a los usuarios (compradores y vendedores).
