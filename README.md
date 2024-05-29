@@ -82,7 +82,11 @@ Sistema de gestión de bases de datos relacional orientado a objetos y de códig
 
 Lenguaje de alto nivel de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código. programación multiparadigma, ya que soporta parcialmente la orientación a objetos, programación imperativa y, en menor medida, programación funcional. Y con notable efectividad para lectura de archivos y lectura a base de datos no relacionales
 
-#### 5.Next.js
+#### 5. Airflow
+
+Airflow es una plataforma de programación de flujo de trabajo (workflow) open-source, diseñada para programar, monitorear y gestionar flujos de trabajo complejos en sistemas informáticos. Su funcionalidad específica se puede dividir en varios componentes clave: Definición de flujos de trabajos (DAGs), Programación de tareas, Orquestación de Flujos de Trabajo, Monitoreo y Registro, Extensibilidad y Personalización e Integración con Ecosistemas de Datos.
+
+#### 6.Next.js
 
 Es un marco web de desarrollo front-end de React de código abierto, con funcionalidades como la representación del lado del servidor y la generación de sitios web estáticos para aplicaciones web basadas en React. Al ser un lenguaje liviano es eficiente para el logeo, carga y consulta de datos.frw 
 
@@ -116,6 +120,10 @@ Implica la carga de datos transaccionales desde una aplicación frontend o inter
 - Carga Analítica a MongoDB y SQL: 
 
 Consiste en la carga de datos desde un servicio Python, primero a MongoDB para almacenamiento temporal y luego a una base de datos SQL para un análisis.
+
+### 5. Orquestación de tabla de datos
+
+Mediante Airflow, se realiza la orquestación del cargue y actualización de las tablas de datos, los cuales, permiten que la información que se encuentran en los motores de bases de datos (proceso en el backend), se desplieguen el la app (front)
 
 ### Tecnologías utilizadas
 
