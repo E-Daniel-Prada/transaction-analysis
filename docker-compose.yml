@@ -1,21 +1,18 @@
 version: '3.8'
 services:
-
   project-postgres:
     image: postgres:latest
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
-      POSTGRES_HOST: localhost
-      POSTGRES_PORT: 5432
     container_name: project-postgres
     env_file:
       - .env
     ports:
       - "5432:5432"
     networks:
-      - mongodb-network
+      - mongo-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U airflow"]
       interval: 10s
@@ -36,7 +33,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - mongodb-network
+      - mongo-network
 
   mongo-express:
     image: mongo-express:latest
@@ -52,7 +49,7 @@ services:
     ports:
       - 8081:8081      
     networks:
-      - mongodb-network
+      - mongo-network
     depends_on:
       - mongodb
 
@@ -65,7 +62,6 @@ services:
     volumes:
         - ./dags:/app/airflow/dags
         - ./data:/usr/local/airflow/data 
-        # - ./credentials.json:/home/credentials.json
     command:
           - /bin/sh
           - -c
@@ -85,7 +81,6 @@ services:
               airflow connections add mongo_default --conn-type uri --conn-host 'mongodb://root:password@mongodb:27017/'
               airflow users create --role Admin --username airflow --email airflow@airflow --firstname airflow --lastname airflow --password superTest
               sh
-            # export GOOGLE_APPLICATION_CREDENTIALS=/home/credentials.json
     environment:
         AIRFLOW_HOME: /app/airflow
         AIRFLOW__CORE__FERNET_KEY: ''
@@ -99,7 +94,7 @@ services:
       - project-postgres
       - mongodb
     networks:
-      - mongodb-network
+      - mongo-network
 
   redis:
     image: redis:latest
@@ -116,14 +111,17 @@ services:
       - "3000:3000"
     environment:
       - CACHE_TOKEN=5D553D14CBA5C8D7F29A5A61AFEE3
+      - POSTGRES_HOST=project-postgres  # Cambiar a project-postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
     depends_on:
       - redis
       - project-postgres
     networks:
-      - mongodb-network
+      - mongo-network
       
 networks:
-  mongodb-network:
+  mongo-network:
     driver: bridge
-    name: mongo-network
-
