@@ -7,6 +7,8 @@ services:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
     container_name: project-postgres
     env_file:
       - .env
@@ -112,6 +114,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      - CACHE_TOKEN=5D553D14CBA5C8D7F29A5A61AFEE3
     depends_on:
       - redis
       - project-postgres
