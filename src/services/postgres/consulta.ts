@@ -27,7 +27,7 @@ export async function getPayments(query: string) {
     return result.rows;
 
   } catch (error) {
-    console.error('Error conectando a la base de datos:', error.message);
-    throw new Error('Error conectando a la base de datos: ' + error.message);
+    console.error('Error conectando a la base de datos:', error);
+    throw new Error('Error conectando a la base de datos: ' + error);
   }
 }
