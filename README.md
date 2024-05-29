@@ -61,10 +61,9 @@ La confiabilidad se relaciona con el punto de seguridad previamente descrito, po
 Arquitectura basada en Docker para consulta e ingesta de datos de pagos rechazados. 
 <img width="706" alt="Screenshot 2024-05-28 at 10 59 35 PM" src="https://github.com/Elkin77/transaction-analysis/assets/60974474/7d3f328f-8a8f-4c35-a3dd-e5ab9aa190fd">
 
-<img width="1161" alt="Screenshot 2024-05-28 at 10 58 59 PM" src="https://github.com/Elkin77/transaction-analysis/assets/60974474/c2d203bd-9fd4-46cc-97e3-eb284b7833dd">
-
 
 ### Componentes
+<img width="1161" alt="Screenshot 2024-05-28 at 10 58 59 PM" src="https://github.com/Elkin77/transaction-analysis/assets/60974474/c2d203bd-9fd4-46cc-97e3-eb284b7833dd">
 
 #### 1. Redis
 
@@ -87,6 +86,9 @@ Lenguaje de alto nivel de programación interpretado cuya filosofía hace hincap
 #### 5.Next.js
 
 Es un marco web de desarrollo front-end de React de código abierto, con funcionalidades como la representación del lado del servidor y la generación de sitios web estáticos para aplicaciones web basadas en React. Al ser un lenguaje liviano es eficiente para el logeo, carga y consulta de datos.frw 
+
+#### 6.Airflow
+Apache Airflow es una plataforma de código abierto diseñada para programar, gestionar y monitorizar flujos de trabajo complejos, permite a los usuarios definir flujos de trabajo como código (Workflows as Code), lo que significa que los flujos de trabajo se pueden definir mediante scripts Python.
 
 ### Flujo de datos
 
