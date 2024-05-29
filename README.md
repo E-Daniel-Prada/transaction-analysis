@@ -130,6 +130,47 @@ Python, JavaScript, Node.js, SQL, NoSQL y framework Next.js, el cual fundamenta 
 
 ### Configuración e instalación
 
+A continuación se brindan las instrucción para acceder al proyecto mediante Docker Compose:
+
+Nota: El caracter " " no se deben considerar. Se utiliza para describir de manera específica la instrucción
+
+1. En primera instancia, se requiere clonar el proyecto desde GitHub.
+   
+2. Es necesario contar con Docker Compose instalado en el equipo local. Favor considerar las particularidades de instalación de cada sistema operativo.
+   
+3. Inicializar los contenedores de Dcoker (Levantamiento de servicios): instrucción "docker-compose up". Se recomienda ejecutar el comando con perfil administrador (Sudo).
+  Es necesario esperar a que en consola aparezca la siguiente instrucción: "Instalación de Airflow OK".
+
+4. Ingresar desde el navegador a la siguiente ruta: "http://localhost:8082/home"
+   
+5. Ingresar credenciales de acceso:
+     * User: "airflow@airflow"
+     * Password: "superTest"
+  
+6. Una vez se ingresa a Airflow, identificar la columna actions (parte derecha de la pantalla). A continuación se procede con la activación de la tabla de datos CSV, dando click en el botón "play", el cual tiene por nombre "Trigger DAG".
+
+* import_csv_to_mongodb 
+
+7. El anterior punto corresponde al cargo de la colección de datos. Para validar el cargue de los datos, se solicita ir a la siguiente ruta "http://localhost:8081/db/test/testcollection" y acceder con el siguiente usuario:
+
+   * User: "admin"
+   * Password: "password"
+  
+Una vez se ingresa, se debe identificar las tabla de datos cargadas. Una vez identificado el cargue de los datos, se debe regresar a la ventana de navegador de Airflow (mencionado en el punto 6).
+
+8. En Airflow se deben ejecutar el resto de los actions, dando click en el botón "Trigger DAG". Se recomienda el siguiente orden:
+   
+   * load_transactions_by_day_in_postgresql
+   * load_transactions_by_inconsistency_in_postgresql
+   * load_transactions_failed_in_postgresql
+   * load_transactions_summary_in_postgresql
+
+9. Una vez ejecutadas todas las tareas, se ha garantizado que los datos han migrado del motor de base de datos "MongoDB" a "Postgresql". Ahora, ingresar a la siguiente ruta: "http://localhost:3000/"
+
+10. Si ha logrado llegar al presente punto, le notifico que ha procesado toda la información que se ejecuta en el backend. Ahora, se procedera con el acceso al frontend
+
+11. En el Front se debe realizar el registro de usuario. Diligenciar todos los datos y dar click en el botón "Crear cuenta". Una vez creada la cuenta, dar click en el botón "Pagos" para acceder a la visualización del usuario. Es importante mencionar que en el login se utiliza la base de datos Redis.
+
 ### Uso del proyecto
 
 ### Mantenimiento y soporte
