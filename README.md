@@ -59,8 +59,10 @@ La confiabilidad se relaciona con el punto de seguridad previamente descrito, po
 ## Descripción de la arquitectura
 
 Arquitectura basada en Docker para consulta e ingesta de datos de pagos rechazados. 
+<img width="706" alt="Screenshot 2024-05-28 at 10 59 35 PM" src="https://github.com/Elkin77/transaction-analysis/assets/60974474/7d3f328f-8a8f-4c35-a3dd-e5ab9aa190fd">
 
-![image](https://github.com/Elkin77/transaction-analysis/assets/161098729/2b37fa4d-044d-4da6-8595-e2c593a66bf8)
+<img width="1161" alt="Screenshot 2024-05-28 at 10 58 59 PM" src="https://github.com/Elkin77/transaction-analysis/assets/60974474/c2d203bd-9fd4-46cc-97e3-eb284b7833dd">
+
 
 ### Componentes
 
