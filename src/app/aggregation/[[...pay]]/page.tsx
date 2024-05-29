@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Style from '../PayLayout.module.sass';
 import PayPage from "../payPage";
 import { validateAccessToken } from "app/utils/auth/validateAccessToken"; 
-import { getSummary } from "app/services/postgres/queries";
+import { getAggregated } from "app/services/postgres/queries";
 export const dynamic = 'force-dynamic';
 import { getPayments } from "app/services/postgres/consulta";
 
@@ -13,7 +13,7 @@ interface CategoryProps {
 
 export default async function Category(props: CategoryProps) {
   const customer = await validateAccessToken();
-  const dataPayment = await getPayments(getSummary);
+  const dataPayment = await getPayments(getAggregated);
   
   let dataParams = data
 

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation"
 import bcrypt from 'bcryptjs';
 import redis from "app/utils/auth/redis"
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getPayments } from 'app/services/mongo/consulta';
+import { getPayments } from 'app/services/postgres/consulta';
 import { v4 as uuidv4 } from 'uuid';
 
 export const handleCreateUser = async (formData: FormData) => {
@@ -91,16 +91,13 @@ export const handleLogOut = async () => {
   redirect('/login');
 };
 
-export default async function handlerQuery(req: NextApiRequest, res: NextApiResponse) {
+export const handleQueryClick = async (query: string) => {
   try {
-    const { userId } = req.query;
-
-    const payments = await getPayments(userId as string);
-
-    return res.status(200).json({ payments });
+    const result = await getPayments(query);
+    return result;
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error executing query:', error);
+    throw new Error('Error executing query');
   }
-}
+};
 

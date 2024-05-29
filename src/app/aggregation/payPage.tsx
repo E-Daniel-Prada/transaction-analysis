@@ -1,16 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaCreditCard } from "react-icons/fa";
+import { FaCalendarDay } from "react-icons/fa";
 import Style from "./PayLayout.module.sass";
 import ChartComponent from "./chart";
 import Paginator from "app/components/shared/Paginator";
 
-interface Payment {
-  transaction_date: Date;
-  total_transactions: number;
-  mongo_id: string;
-}
 
 interface PagePayProps {
   data?: any;
@@ -38,22 +33,22 @@ export default function PayPage(props: PagePayProps) {
           {currentPayments?.map((payment: any, index: number) => (
             <li className={Style.payLayout__chip} key={index.toString()}>
               <div className={Style.payLayout__content_batch}>
-                <strong>Site: {payment.country}</strong>
-                <span className={Style.divider} />
                 <span>
-                  <FaCreditCard /> Payment Type: {payment.payment_method}{" "}
+                  <FaCalendarDay /> Fecha de la transacción: {payment.mongo_id}{" "}
                 </span>
                 <span className={Style.divider} />
-                <span>${payment.total_amount}</span>
+                <span>Total de transacciones: {payment.total_transactions}</span>
               </div>
             </li>
           ))}
         </ul>
-        <Paginator
-          totalItems={userPayments?.length || 0}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        {userPayments?.length > 10 && (
+          <Paginator
+            totalItems={userPayments?.length || 0}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
       <div className={Style.contentChart}>
         <ChartComponent data={currentPayments || []} />{" "}
