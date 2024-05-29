@@ -173,7 +173,49 @@ Una vez se ingresa, se debe identificar las tabla de datos cargadas. Una vez ide
 
 ### Uso del proyecto
 
+El proyecto tiene el objetivo de identificar transacciones que derivan en devoluciones de dinero para la entidad Mercado Libre. Por consiguiente, el objetivo se centra en identificar patrones sobre los datos recolectados, en aras de generar efiencias financieras (dar seguimiento al flujo de caja y potenciales riesgo de liquidez), dar mayor cobertura en el monitoreo de operaciones fraudulentas y garantizar mayor calidad de servicio a los usuarios (compradores y vendedores).
+
+De igual forma, desde una perspectiva del la arquitectura urilizada en el proyecto y su replicabilidad, es posible añadir usos, los cuales se describen a continuación.
+
+Para agregar bases de datos, indicadores y conexiones mediante tareas DAGs en Airflow es necesario considerar los siguientes aspectos:
+
+#### Paso 1: Definir la Estructura del DAG
+
+Crea un DAG principal que se encargue de la gestión de bases de datos, indicadores y conexiones. Este DAG puede tener tres flujos de trabajo separados, uno para cada tarea: agregar bases de datos, agregar indicadores y agregar conexiones.
+
+#### Paso 2: Crear Tareas para Agregar Bases de Datos
+
+1. **Crear tarea para verificar la existencia de la base de datos**: Esta tarea verificará si la base de datos ya existe en el sistema. Si no existe, continuará con el siguiente paso. Si existe, puede finalizar el DAG con un estado de éxito.
+
+2. **Crear tarea para agregar la base de datos**: Esta tarea ejecutará el script necesario para agregar la base de datos al sistema. Esto puede implicar la ejecución de comandos SQL o el uso de una API específica del sistema de bases de datos que estés utilizando.
+
+#### Paso 3: Crear Tareas para Agregar Indicadores
+
+1. **Crear tarea para verificar la existencia del indicador**: Similar a la tarea para agregar bases de datos, esta tarea verificará si el indicador ya existe en el sistema. Si ya existe, el DAG puede finalizar con un estado de éxito. De lo contrario, continuará con el siguiente paso.
+
+2. **Crear tarea para agregar el indicador**: Esta tarea ejecutará el script necesario para agregar el indicador al sistema. Dependiendo de tus necesidades, esto podría implicar la inserción de datos en una tabla de indicadores, la creación de un nuevo archivo de configuración, etc.
+
+#### Paso 4: Crear Tareas para Agregar Conexiones
+
+1. **Crear tarea para verificar la existencia de la conexión**: Esta tarea verificará si la conexión ya está configurada en Airflow. Si ya existe, el DAG puede finalizar con un estado de éxito. De lo contrario, continuará con el siguiente paso.
+
+2. **Crear tarea para agregar la conexión**: Esta tarea utilizará la API de Airflow o el cliente de línea de comandos para agregar la conexión al sistema. Deberá proporcionar los detalles necesarios, como el tipo de conexión, el host, el puerto, las credenciales, etc.
+
+#### Paso 5: Definir Dependencias entre Tareas
+
+Establece las dependencias entre las tareas de cada flujo de trabajo para garantizar que se ejecuten en el orden correcto y que las tareas subsiguientes se ejecuten solo si las anteriores tienen éxito.
+
+#### Paso 6: Programar el DAG
+
+Programa el DAG para que se ejecute periódicamente o según sea necesario, dependiendo de tu caso de uso específico. Puedes configurar un horario fijo o utilizar desencadenadores externos, como la detección de cambios en un repositorio de Git.
+
 ### Mantenimiento y soporte
+
+Considerando que Airflow hace el papel de "orquestador", se hace necesario implementar mecanismos de monitoreo para supervisar la ejecución del DAG y gestionar cualquier error que pueda surgir durante el proceso de agregación de bases de datos, indicadores o conexiones. Puedes utilizar registros, alertas por correo electrónico o integraciones con herramientas de monitoreo externas.
+
+Siguiendo este proceso, es posible automatizar la gestión de bases de datos, indicadores y conexiones en Airflow, lo que facilita la administración y el mantenimiento de tu infraestructura de datos.
+
+Por consiguiente es importante distribuir de manera eficiente la actualización de las tablas de datos que alimentan el front, lo anterior para evitar que todas las tablas de datos se actualicen al mismo tiempo y generen sobrecarga al sistema. Airflow permite establecer periodicidad de los eventos para garantizar distribución eficiente en el desarrollo del sistema.
 
 ### Contribuciones
 
